@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dp_280"
+    android:layout_height="@dimen/dp_200"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/text_login"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/sp_18" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp_5"
+        android:gravity="center"
+        android:text="@string/text_login_way"
+        android:textColor="@color/colorGray"
+        android:textSize="@dimen/sp_10" />
+
+    <LinearLayout
+        android:id="@+id/lyt_login_facebook"
+        android:layout_width="@dimen/dp_150"
+        android:layout_height="@dimen/dp_28"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp_13"
+        android:background="@drawable/layout_facebook_corner"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/dp_2"
+            android:src="@drawable/facebook" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:text="@string/text_facebook"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/sp_10" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lyt_login_google"
+        android:layout_width="@dimen/dp_150"
+        android:layout_height="@dimen/dp_28"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/dp_13"
+        android:background="@drawable/layout_google_corner"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/dp_2"
+            android:src="@drawable/google" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:text="@string/text_google"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/sp_10" />
+    </LinearLayout>
+
+</LinearLayout>

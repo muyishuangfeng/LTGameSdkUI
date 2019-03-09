@@ -92,7 +92,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
         if (!TextUtils.isEmpty(LTAppID) &&
                 !TextUtils.isEmpty(LTAppKey)) {
             GooglePlayLoginManager.onActivityResult(requestCode, data, REQUEST_CODE, mActivity,
-                   LTAppID, LTAppKey,
+                    LTAppID, LTAppKey,
                     new OnLoginSuccessListener() {
                         @Override
                         public void onSuccess(BaseEntry<ResultData> result) {
@@ -103,7 +103,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                                 if (result.getData().getApi_token() != null &&
                                         result.getData().getLt_uid() != null) {
                                     EventUtils.sendEvent(new Event<>(BaseResult.MSG_RESULT_GOOGLE_SUCCESS,
-                                            result));
+                                            result.getData()));
                                 }
                             }
                         }
@@ -193,7 +193,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                                 if (result.getData().getApi_token() != null &&
                                         result.getData().getLt_uid() != null) {
                                     EventUtils.sendEvent(new Event<>(BaseResult.MSG_RESULT_FACEBOOK_SUCCESS,
-                                            result));
+                                            result.getData()));
                                 }
                             }
                         }

@@ -115,8 +115,10 @@ public class AgreementFragment extends BaseFragment implements View.OnClickListe
         SpannableStringBuilder style = new SpannableStringBuilder();
         SpannableStringBuilder style2 = new SpannableStringBuilder();
         //设置文字
-        style.append(getResources().getString(R.string.text_agreement));
-        style2.append(getResources().getString(R.string.text_privacy));
+        String agreement=getResources().getString(R.string.text_agreement);
+        String privacy=getResources().getString(R.string.text_privacy);
+        style.append(agreement);
+        style2.append(privacy);
 
         //设置部分文字点击事件
         ClickableSpan clickableSpan = new ClickableSpan() {
@@ -136,16 +138,16 @@ public class AgreementFragment extends BaseFragment implements View.OnClickListe
                 }
             }
         };
-        style.setSpan(clickableSpan, 11, 13, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        style2.setSpan(clickableSpan2, 13, 15, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        style.setSpan(clickableSpan, 0,agreement.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        style2.setSpan(clickableSpan2, 0, privacy.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
         mTxtPrivacy.setText(style2);
         mTxtAgreement.setText(style);
 
         //设置部分文字颜色
         ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(getResources().getColor(R.color.colorBlue));
         ForegroundColorSpan foregroundColorSpan2 = new ForegroundColorSpan(getResources().getColor(R.color.colorBlue));
-        style.setSpan(foregroundColorSpan, 11, 13, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        style2.setSpan(foregroundColorSpan2, 13, 15, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        style.setSpan(foregroundColorSpan, 0, agreement.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        style2.setSpan(foregroundColorSpan2, 0, privacy.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         //配置给TextView
         mTxtPrivacy.setMovementMethod(LinkMovementMethod.getInstance());

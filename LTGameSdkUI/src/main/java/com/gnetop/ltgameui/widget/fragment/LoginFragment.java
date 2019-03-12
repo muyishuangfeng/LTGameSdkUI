@@ -16,7 +16,7 @@ import com.gnetop.ltgamecommon.model.Event;
 import com.gnetop.ltgamecommon.model.ResultData;
 import com.gnetop.ltgamecommon.util.EventUtils;
 import com.gnetop.ltgamefacebook.FaceBookLoginManager;
-import com.gnetop.ltgamegoogle.GooglePlayLoginManager;
+import com.gnetop.ltgamegoogle.login.GooglePlayLoginManager;
 import com.gnetop.ltgameui.R;
 import com.gnetop.ltgameui.base.BaseFragment;
 

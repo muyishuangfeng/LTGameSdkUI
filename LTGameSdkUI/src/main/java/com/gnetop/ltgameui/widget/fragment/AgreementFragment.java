@@ -22,7 +22,6 @@ import com.gnetop.ltgameui.base.BaseFragment;
 import com.gnetop.ltgamecommon.util.UrlUtils;
 import com.gnetop.ltgameui.R;
 
-import java.util.concurrent.atomic.DoubleAccumulator;
 
 
 public class AgreementFragment extends BaseFragment implements View.OnClickListener,

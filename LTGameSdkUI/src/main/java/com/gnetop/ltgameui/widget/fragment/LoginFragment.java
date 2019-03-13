@@ -88,6 +88,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                 resultData.setLt_uid(PreferencesUtils.getString(mActivity, Constants.USER_FACEBOOK_LT_UID));
                 EventUtils.sendEvent(new Event<>(BaseResult.MSG_RESULT_FACEBOOK_SUCCESS,
                         resultData));
+                getProxyActivity().finish();
             } else {
                 FaceBookLoginManager.getInstance().faceBookLogin(mActivity);
             }
@@ -99,6 +100,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                 resultData.setLt_uid(PreferencesUtils.getString(mActivity, Constants.USER_GOOGLE_LT_UID));
                 EventUtils.sendEvent(new Event<>(BaseResult.MSG_RESULT_GOOGLE_SUCCESS,
                         resultData));
+                getProxyActivity().finish();
             }else {
                 if (!TextUtils.isEmpty(googleClientID)) {
                     GooglePlayLoginManager.initGoogle(mActivity,

@@ -11,7 +11,6 @@ import com.gnetop.ltgameui.base.BaseFragment;
 import com.gnetop.ltgameui.ui.ProgressView;
 
 
-
 public class LoginFailedFragment extends BaseFragment {
 
     LinearLayout mLytFailed;

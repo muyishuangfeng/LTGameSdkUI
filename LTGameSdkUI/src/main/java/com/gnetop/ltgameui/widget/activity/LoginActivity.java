@@ -3,11 +3,13 @@ package com.gnetop.ltgameui.widget.activity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.gnetop.ltgamecommon.model.BundleData;
 import com.gnetop.ltgameui.R;
 import com.gnetop.ltgameui.base.BaseAppActivity;
+import com.gnetop.ltgameui.base.Constants;
+import com.gnetop.ltgameui.util.PreferencesUtils;
+import com.gnetop.ltgameui.widget.fragment.AgreementFragment;
 import com.gnetop.ltgameui.widget.fragment.LoginFragment;
 
 public class LoginActivity extends BaseAppActivity {
@@ -37,11 +39,24 @@ public class LoginActivity extends BaseAppActivity {
         data.setLTAppKey(LTAppKey);
         if (!TextUtils.isEmpty(mAgreementUrl) &&
                 !TextUtils.isEmpty(mPrivacyUrl)) {
-            if (findFragment(LoginFragment.class) == null) {
-                addFragment(LoginFragment.newInstance(data),
-                        false,
-                        true);
+            if (TextUtils.isEmpty(PreferencesUtils.getString(this,
+                    Constants.USER_AGREEMENT_FLAT))) {
+                if (findFragment(AgreementFragment.class) == null) {
+                    addFragment(AgreementFragment.newInstance(data),
+                            false,
+                            true);
+                }
+            } else {
+                if (TextUtils.isEmpty(PreferencesUtils.getString(this,
+                        Constants.USER_USER_LOGIN_FLAG))) {
+                    if (findFragment(LoginFragment.class) == null) {
+                        addFragment(LoginFragment.newInstance(data),
+                                false,
+                                true);
+                    }
+                }
             }
+
         }
 
     }

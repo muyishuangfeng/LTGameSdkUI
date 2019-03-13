@@ -8,6 +8,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.facebook.AccessToken;
+import com.facebook.FacebookAuthorizationException;
+import com.facebook.login.LoginManager;
 import com.gnetop.ltgamecommon.base.BaseResult;
 import com.gnetop.ltgamecommon.impl.OnLoginSuccessListener;
 import com.gnetop.ltgamecommon.model.BaseEntry;
@@ -19,6 +22,8 @@ import com.gnetop.ltgamefacebook.FaceBookLoginManager;
 import com.gnetop.ltgamegoogle.login.GooglePlayLoginManager;
 import com.gnetop.ltgameui.R;
 import com.gnetop.ltgameui.base.BaseFragment;
+import com.gnetop.ltgameui.base.Constants;
+import com.gnetop.ltgameui.util.PreferencesUtils;
 
 public class LoginFragment extends BaseFragment implements View.OnClickListener {
 
@@ -66,7 +71,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                 LTAppID = mData.getLTAppID();
                 LTAppKey = mData.getLTAppKey();
                 Log.e("LoginFragment", mPrivacyUrl + "====" + mAgreementUrl
-                        + "===" + googleClientID + "===" + LTAppKey + "===" + LTAppID);
+                        + "==="+ "===" + LTAppKey + "===" + LTAppID);
             }
         }
         initFaceBook();
@@ -76,12 +81,31 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
     public void onClick(View view) {
         int resID = view.getId();
         if (resID == R.id.lyt_login_facebook) {//facebook
-            FaceBookLoginManager.getInstance().faceBookLogin(mActivity);
-        } else if (resID == R.id.lyt_login_google) {//google
-            if (!TextUtils.isEmpty(googleClientID)) {
-                GooglePlayLoginManager.initGoogle(mActivity,
-                        googleClientID, REQUEST_CODE);
+            if (!TextUtils.isEmpty(PreferencesUtils.getString(mActivity, Constants.USER_FACEBOOK_LT_UID_TOKEN))
+                    && !TextUtils.isEmpty(PreferencesUtils.getString(mActivity, Constants.USER_FACEBOOK_LT_UID))) {
+                ResultData resultData = new ResultData();
+                resultData.setApi_token(PreferencesUtils.getString(mActivity, Constants.USER_FACEBOOK_LT_UID_TOKEN));
+                resultData.setLt_uid(PreferencesUtils.getString(mActivity, Constants.USER_FACEBOOK_LT_UID));
+                EventUtils.sendEvent(new Event<>(BaseResult.MSG_RESULT_FACEBOOK_SUCCESS,
+                        resultData));
+            } else {
+                FaceBookLoginManager.getInstance().faceBookLogin(mActivity);
             }
+        } else if (resID == R.id.lyt_login_google) {//google
+            if (!TextUtils.isEmpty(PreferencesUtils.getString(mActivity, Constants.USER_GOOGLE_LT_UID_TOKEN))
+                    && !TextUtils.isEmpty(PreferencesUtils.getString(mActivity, Constants.USER_GOOGLE_LT_UID))) {
+                ResultData resultData = new ResultData();
+                resultData.setApi_token(PreferencesUtils.getString(mActivity, Constants.USER_GOOGLE_LT_UID_TOKEN));
+                resultData.setLt_uid(PreferencesUtils.getString(mActivity, Constants.USER_GOOGLE_LT_UID));
+                EventUtils.sendEvent(new Event<>(BaseResult.MSG_RESULT_GOOGLE_SUCCESS,
+                        resultData));
+            }else {
+                if (!TextUtils.isEmpty(googleClientID)) {
+                    GooglePlayLoginManager.initGoogle(mActivity,
+                            googleClientID, REQUEST_CODE);
+                }
+            }
+
         }
     }
 
@@ -98,12 +122,15 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                         public void onSuccess(BaseEntry<ResultData> result) {
                             if (result != null) {
                                 if (result.getCode() == 200) {
-                                    toAgreementUrl();
-                                }
-                                if (result.getData().getApi_token() != null &&
-                                        result.getData().getLt_uid() != null) {
-                                    EventUtils.sendEvent(new Event<>(BaseResult.MSG_RESULT_GOOGLE_SUCCESS,
-                                            result.getData()));
+                                    if (result.getData().getApi_token() != null &&
+                                            result.getData().getLt_uid() != null) {
+                                        EventUtils.sendEvent(new Event<>(BaseResult.MSG_RESULT_GOOGLE_SUCCESS,
+                                                result.getData()));
+                                        PreferencesUtils.putString(mActivity, Constants.USER_USER_LOGIN_FLAG, "2");
+                                        PreferencesUtils.putString(mActivity, Constants.USER_GOOGLE_LT_UID, result.getData().getLt_uid());
+                                        PreferencesUtils.putString(mActivity, Constants.USER_GOOGLE_LT_UID_TOKEN, result.getData().getApi_token());
+                                        getProxyActivity().finish();
+                                    }
                                 }
                             }
                         }
@@ -188,18 +215,27 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                         public void onSuccess(BaseEntry<ResultData> result) {
                             if (result != null) {
                                 if (result.getCode() == 200) {
-                                    toAgreementUrl();
-                                }
-                                if (result.getData().getApi_token() != null &&
-                                        result.getData().getLt_uid() != null) {
-                                    EventUtils.sendEvent(new Event<>(BaseResult.MSG_RESULT_FACEBOOK_SUCCESS,
-                                            result.getData()));
+                                    if (result.getData().getApi_token() != null &&
+                                            result.getData().getLt_uid() != null) {
+                                        EventUtils.sendEvent(new Event<>(BaseResult.MSG_RESULT_FACEBOOK_SUCCESS,
+                                                result.getData()));
+                                        PreferencesUtils.putString(mActivity, Constants.USER_USER_LOGIN_FLAG, "2");
+                                        PreferencesUtils.putString(mActivity, Constants.USER_FACEBOOK_LT_UID, result.getData().getLt_uid());
+                                        PreferencesUtils.putString(mActivity, Constants.USER_FACEBOOK_LT_UID_TOKEN, result.getData().getApi_token());
+                                        getProxyActivity().finish();
+                                    }
+
                                 }
                             }
                         }
 
                         @Override
                         public void onFailed(Throwable ex) {
+                            if (ex instanceof FacebookAuthorizationException) {
+                                if (AccessToken.getCurrentAccessToken() != null) {
+                                    LoginManager.getInstance().logOut();
+                                }
+                            }
                             Log.e("facebook", ex.getMessage());
                             loginFailed();
                         }

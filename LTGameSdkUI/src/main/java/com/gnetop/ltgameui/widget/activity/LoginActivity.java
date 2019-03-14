@@ -47,14 +47,11 @@ public class LoginActivity extends BaseAppActivity {
                             true);
                 }
             } else {
-                if (TextUtils.isEmpty(PreferencesUtils.getString(this,
-                        Constants.USER_USER_LOGIN_FLAG))) {
                     if (findFragment(LoginFragment.class) == null) {
                         addFragment(LoginFragment.newInstance(data),
                                 false,
                                 true);
                     }
-                }
             }
 
         }

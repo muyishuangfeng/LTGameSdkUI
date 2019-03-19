@@ -24,9 +24,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="@dimen/dp_14"
+        android:layout_marginStart="@dimen/dp_30"
         android:layout_marginTop="@dimen/dp_17"
-        android:layout_marginStart="@dimen/dp_2"
-        android:gravity="center_horizontal"
+        android:gravity="start"
         android:orientation="horizontal">
 
         <android.support.v7.widget.AppCompatCheckBox
@@ -61,9 +61,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginBottom="@dimen/dp_19"
-        android:layout_marginStart="@dimen/dp_2"
-        android:gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:layout_marginStart="@dimen/dp_30"
+        android:gravity="start"
         android:orientation="horizontal">
 
         <android.support.v7.widget.AppCompatCheckBox

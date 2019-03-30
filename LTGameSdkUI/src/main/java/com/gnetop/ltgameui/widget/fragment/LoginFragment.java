@@ -19,7 +19,7 @@ import com.gnetop.ltgamecommon.model.Event;
 import com.gnetop.ltgamecommon.model.ResultData;
 import com.gnetop.ltgamecommon.util.EventUtils;
 import com.gnetop.ltgamefacebook.FaceBookLoginManager;
-import com.gnetop.ltgamegoogle.login.GooglePlayLoginManager;
+import com.gnetop.ltgamegoogle.login.GoogleLoginManager;
 import com.gnetop.ltgameui.R;
 import com.gnetop.ltgameui.base.BaseFragment;
 import com.gnetop.ltgameui.base.Constants;
@@ -84,7 +84,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
             FaceBookLoginManager.getInstance().faceBookLogin(mActivity);
         } else if (resID == R.id.lyt_login_google) {//google
             if (!TextUtils.isEmpty(googleClientID)) {
-                GooglePlayLoginManager.initGoogle(mActivity,
+                GoogleLoginManager.initGoogle(mActivity,
                         googleClientID, REQUEST_CODE);
             }
 
@@ -97,7 +97,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
         FaceBookLoginManager.getInstance().setOnActivityResult(requestCode, resultCode, data);
         if (!TextUtils.isEmpty(LTAppID) &&
                 !TextUtils.isEmpty(LTAppKey)) {
-            GooglePlayLoginManager.onActivityResult(requestCode, data, REQUEST_CODE, mActivity,
+            GoogleLoginManager.onActivityResult(requestCode, data, REQUEST_CODE, mActivity,
                     LTAppID, LTAppKey,
                     new OnLoginSuccessListener() {
                         @Override
@@ -109,7 +109,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                                         EventUtils.sendEvent(new Event<>(BaseResult.MSG_RESULT_GOOGLE_SUCCESS,
                                                 result.getData()));
                                         PreferencesUtils.putString(mActivity, Constants.USER_LT_UID, result.getData().getLt_uid());
-                                        PreferencesUtils.putString(mActivity, Constants.USER_LT_UID_TOKEN, result.getData().getApi_token());
+                                        PreferencesUtils.putString(mActivity, Constants.USER_LT_UID_TOKEN, result.getData().getLt_uid_token());
                                         getProxyActivity().finish();
                                     }
                                 }
@@ -201,7 +201,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                                         EventUtils.sendEvent(new Event<>(BaseResult.MSG_RESULT_FACEBOOK_SUCCESS,
                                                 result.getData()));
                                         PreferencesUtils.putString(mActivity, Constants.USER_LT_UID, result.getData().getLt_uid());
-                                        PreferencesUtils.putString(mActivity, Constants.USER_LT_UID_TOKEN, result.getData().getApi_token());
+                                        PreferencesUtils.putString(mActivity, Constants.USER_LT_UID_TOKEN, result.getData().getLt_uid_token());
                                         getProxyActivity().finish();
                                     }
 

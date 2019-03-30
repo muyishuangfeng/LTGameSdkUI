@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 
 import com.gnetop.ltgamecommon.model.ResultData;
-import com.gnetop.ltgamegoogle.login.GooglePlayLoginManager;
+import com.gnetop.ltgamegoogle.login.GoogleLoginManager;
 import com.gnetop.ltgamegoogle.login.OnGoogleSignOutListener;
 import com.gnetop.ltgameui.base.Constants;
 import com.gnetop.ltgameui.impl.OnReLoginInListener;
@@ -19,7 +19,7 @@ import com.gnetop.ltgameui.widget.activity.LoginActivity;
 public class LoginUIManager {
 
 
-    private static LoginUIManager sInstance;
+    private volatile static LoginUIManager sInstance;
 
     private LoginUIManager() {
     }
@@ -55,7 +55,7 @@ public class LoginUIManager {
         } else {
             ResultData resultData = new ResultData();
             resultData.setLt_uid(PreferencesUtils.getString(activity, Constants.USER_LT_UID));
-            resultData.setApi_token(PreferencesUtils.getString(activity, Constants.USER_LT_UID_TOKEN));
+            resultData.setLt_uid_token(PreferencesUtils.getString(activity, Constants.USER_LT_UID_TOKEN));
             mListener.OnLoginResult(resultData);
         }
     }
@@ -75,7 +75,7 @@ public class LoginUIManager {
                          final String LTAppID, final String LTAppKey) {
         PreferencesUtils.remove(activity, Constants.USER_LT_UID);
         PreferencesUtils.remove(activity, Constants.USER_LT_UID_TOKEN);
-        GooglePlayLoginManager.GoogleSingOut(activity, googleClientID, new OnGoogleSignOutListener() {
+        GoogleLoginManager.GoogleSingOut(activity, googleClientID, new OnGoogleSignOutListener() {
             @Override
             public void onSignOutSuccess() {
                 if (TextUtils.isEmpty(PreferencesUtils.getString(activity,

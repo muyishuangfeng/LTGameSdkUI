@@ -9,7 +9,10 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.TextView;
 
+import com.gnetop.ltgamecommon.base.BaseResult;
 import com.gnetop.ltgamecommon.model.BundleData;
+import com.gnetop.ltgamecommon.model.Event;
+import com.gnetop.ltgamecommon.util.EventUtils;
 import com.gnetop.ltgamecommon.util.UrlUtils;
 import com.gnetop.ltgameui.R;
 import com.gnetop.ltgameui.base.BaseFragment;
@@ -87,7 +90,7 @@ public class AgreementFragment extends BaseFragment implements View.OnClickListe
     public void onClick(View view) {
         if (view.getId() == R.id.btn_into_game) {
             if (isPrivacy && isAgreement) {
-//                EventUtils.sendEvent(new Event(BaseResult.MSG_RESULT_JUMP_INTO_GAME));
+               EventUtils.sendEvent(new Event(BaseResult.MSG_RESULT_JUMP_INTO_GAME));
 //                getProxyActivity().finish();
                 if (TextUtils.isEmpty(PreferencesUtils.getString(mActivity,
                         Constants.USER_AGREEMENT_FLAT))) {

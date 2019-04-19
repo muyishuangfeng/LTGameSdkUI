@@ -12,18 +12,18 @@ import com.facebook.AccessToken;
 import com.facebook.FacebookAuthorizationException;
 import com.facebook.login.LoginManager;
 import com.gnetop.ltgamecommon.base.BaseResult;
+import com.gnetop.ltgamecommon.base.Constants;
 import com.gnetop.ltgamecommon.impl.OnLoginSuccessListener;
 import com.gnetop.ltgamecommon.model.BaseEntry;
 import com.gnetop.ltgamecommon.model.BundleData;
 import com.gnetop.ltgamecommon.model.Event;
 import com.gnetop.ltgamecommon.model.ResultData;
 import com.gnetop.ltgamecommon.util.EventUtils;
+import com.gnetop.ltgamecommon.util.PreferencesUtils;
 import com.gnetop.ltgamefacebook.FaceBookLoginManager;
 import com.gnetop.ltgamegoogle.login.GoogleLoginManager;
 import com.gnetop.ltgameui.R;
 import com.gnetop.ltgameui.base.BaseFragment;
-import com.gnetop.ltgameui.base.Constants;
-import com.gnetop.ltgameui.util.PreferencesUtils;
 
 public class LoginFragment extends BaseFragment implements View.OnClickListener {
 
@@ -108,6 +108,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                                             result.getData().getLt_uid() != null) {
                                         EventUtils.sendEvent(new Event<>(BaseResult.MSG_RESULT_GOOGLE_SUCCESS,
                                                 result.getData()));
+                                        PreferencesUtils.putString(mActivity, Constants.USER_API_TOKEN, result.getData().getApi_token());
                                         PreferencesUtils.putString(mActivity, Constants.USER_LT_UID, result.getData().getLt_uid());
                                         PreferencesUtils.putString(mActivity, Constants.USER_LT_UID_TOKEN, result.getData().getLt_uid_token());
                                         getProxyActivity().finish();
@@ -200,6 +201,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                                             result.getData().getLt_uid() != null) {
                                         EventUtils.sendEvent(new Event<>(BaseResult.MSG_RESULT_FACEBOOK_SUCCESS,
                                                 result.getData()));
+                                        PreferencesUtils.putString(mActivity, Constants.USER_API_TOKEN, result.getData().getApi_token());
                                         PreferencesUtils.putString(mActivity, Constants.USER_LT_UID, result.getData().getLt_uid());
                                         PreferencesUtils.putString(mActivity, Constants.USER_LT_UID_TOKEN, result.getData().getLt_uid_token());
                                         getProxyActivity().finish();

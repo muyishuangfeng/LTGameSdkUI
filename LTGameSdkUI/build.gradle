@@ -27,7 +27,7 @@ dependencies {
     //fragment
     implementation 'me.yokeyword:fragmentation:1.3.6'
     implementation 'me.yokeyword:fragmentation-swipeback:1.3.6'
-    implementation 'com.github.muyishuangfeng:LTGameSdkCommon:1.0.3'
+    implementation 'com.github.muyishuangfeng:LTGameSdkCommon:1.0.6'
     implementation 'com.github.muyishuangfeng:LTGameSdkFaceBook:1.0.3'
     implementation 'com.github.muyishuangfeng:LTGameSdkGoogle:1.0.6'
 }

@@ -5,12 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 
+import com.gnetop.ltgamecommon.base.Constants;
 import com.gnetop.ltgamecommon.model.ResultData;
+import com.gnetop.ltgamecommon.util.PreferencesUtils;
 import com.gnetop.ltgamegoogle.login.GoogleLoginManager;
 import com.gnetop.ltgamegoogle.login.OnGoogleSignOutListener;
-import com.gnetop.ltgameui.base.Constants;
 import com.gnetop.ltgameui.impl.OnReLoginInListener;
-import com.gnetop.ltgameui.util.PreferencesUtils;
 import com.gnetop.ltgameui.widget.activity.LoginActivity;
 
 /**

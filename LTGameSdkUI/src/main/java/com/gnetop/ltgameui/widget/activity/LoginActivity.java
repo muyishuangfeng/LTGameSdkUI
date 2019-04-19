@@ -4,11 +4,11 @@ package com.gnetop.ltgameui.widget.activity;
 import android.os.Bundle;
 import android.text.TextUtils;
 
+import com.gnetop.ltgamecommon.base.Constants;
 import com.gnetop.ltgamecommon.model.BundleData;
+import com.gnetop.ltgamecommon.util.PreferencesUtils;
 import com.gnetop.ltgameui.R;
 import com.gnetop.ltgameui.base.BaseAppActivity;
-import com.gnetop.ltgameui.base.Constants;
-import com.gnetop.ltgameui.util.PreferencesUtils;
 import com.gnetop.ltgameui.widget.fragment.AgreementFragment;
 import com.gnetop.ltgameui.widget.fragment.LoginFragment;
 

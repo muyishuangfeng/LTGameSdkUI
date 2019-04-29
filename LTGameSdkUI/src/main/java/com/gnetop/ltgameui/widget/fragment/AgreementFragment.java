@@ -80,8 +80,6 @@ public class AgreementFragment extends BaseFragment implements View.OnClickListe
                 googleClientID = mData.getGoogleClientID();
                 LTAppID = mData.getLTAppID();
                 LTAppKey = mData.getLTAppKey();
-                Log.e("AgreementFragment", mPrivacyUrl + "====" + mAgreementUrl
-                        + "===" + googleClientID + "===" + LTAppKey + "===" + LTAppID);
             }
         }
     }

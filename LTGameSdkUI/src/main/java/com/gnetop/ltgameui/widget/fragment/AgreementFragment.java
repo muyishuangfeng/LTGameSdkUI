@@ -33,6 +33,7 @@ public class AgreementFragment extends BaseFragment implements View.OnClickListe
     String googleClientID;
     String LTAppID;
     String LTAppKey;
+    String mAdID;
 
 
     public static AgreementFragment newInstance(BundleData data) {
@@ -80,6 +81,7 @@ public class AgreementFragment extends BaseFragment implements View.OnClickListe
                 googleClientID = mData.getGoogleClientID();
                 LTAppID = mData.getLTAppID();
                 LTAppKey = mData.getLTAppKey();
+                mAdID = mData.getmAdID();
             }
         }
     }
@@ -88,7 +90,7 @@ public class AgreementFragment extends BaseFragment implements View.OnClickListe
     public void onClick(View view) {
         if (view.getId() == R.id.btn_into_game) {
             if (isPrivacy && isAgreement) {
-               EventUtils.sendEvent(new Event(BaseResult.MSG_RESULT_JUMP_INTO_GAME));
+                EventUtils.sendEvent(new Event(BaseResult.MSG_RESULT_JUMP_INTO_GAME));
                 if (TextUtils.isEmpty(PreferencesUtils.getString(mActivity,
                         Constants.USER_AGREEMENT_FLAT))) {
                     PreferencesUtils.putString(mActivity, Constants.USER_AGREEMENT_FLAT, "1");
@@ -142,6 +144,7 @@ public class AgreementFragment extends BaseFragment implements View.OnClickListe
             data.setLTAppKey(LTAppKey);
             data.setLTAppID(LTAppID);
             data.setGoogleClientID(googleClientID);
+            data.setmAdID(mAdID);
             getProxyActivity().addFragment(LoginFragment.newInstance(data),
                     false,
                     true);

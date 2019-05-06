@@ -49,9 +49,9 @@ public class LoginUIManager {
      * @param mListener      登录接口
      */
     public void loginIn(Activity activity, String mAgreementUrl, String mPrivacyUrl, String googleClientID,
-                        String LTAppID, String LTAppKey, OnReLoginInListener mListener) {
+                        String LTAppID, String LTAppKey,String adID, OnReLoginInListener mListener) {
         if (isLoginStatus(activity)) {
-            login(activity, mAgreementUrl, mPrivacyUrl, googleClientID, LTAppID, LTAppKey);
+            login(activity, mAgreementUrl, mPrivacyUrl, googleClientID, LTAppID, LTAppKey,adID);
         } else {
             ResultData resultData = new ResultData();
             resultData.setLt_uid(PreferencesUtils.getString(activity, Constants.USER_LT_UID));
@@ -72,7 +72,7 @@ public class LoginUIManager {
      */
     public void loginOut(final Activity activity, final String mAgreementUrl, final String mPrivacyUrl,
                          final String googleClientID,
-                         final String LTAppID, final String LTAppKey) {
+                         final String LTAppID, final String LTAppKey, final String adID) {
         PreferencesUtils.remove(activity, Constants.USER_LT_UID);
         PreferencesUtils.remove(activity, Constants.USER_LT_UID_TOKEN);
         GoogleLoginManager.GoogleSingOut(activity, googleClientID, new OnGoogleSignOutListener() {
@@ -82,7 +82,7 @@ public class LoginUIManager {
                         Constants.USER_LT_UID)) &&
                         TextUtils.isEmpty(PreferencesUtils.getString(activity,
                                 Constants.USER_LT_UID_TOKEN))) {
-                    login(activity, mAgreementUrl, mPrivacyUrl, googleClientID, LTAppID, LTAppKey);
+                    login(activity, mAgreementUrl, mPrivacyUrl, googleClientID, LTAppID, LTAppKey,adID);
                 }
             }
         });
@@ -112,7 +112,7 @@ public class LoginUIManager {
      * @param LTAppKey       乐推AppKey
      */
     private void login(Activity activity, String mAgreementUrl, String mPrivacyUrl, String googleClientID,
-                       String LTAppID, String LTAppKey) {
+                       String LTAppID, String LTAppKey,String adID) {
         Intent intent = new Intent(activity, LoginActivity.class);
         Bundle bundle = new Bundle();
         bundle.putString("mAgreementUrl", mAgreementUrl);
@@ -120,6 +120,7 @@ public class LoginUIManager {
         bundle.putString("googleClientID", googleClientID);
         bundle.putString("LTAppID", LTAppID);
         bundle.putString("LTAppKey", LTAppKey);
+        bundle.putString("adID", adID);
         intent.putExtra("bundleData", bundle);
         activity.startActivity(intent);
     }

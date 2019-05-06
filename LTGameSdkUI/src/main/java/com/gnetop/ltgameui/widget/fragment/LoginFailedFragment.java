@@ -19,6 +19,7 @@ public class LoginFailedFragment extends BaseFragment {
     String googleClientID;
     String LTAppID;
     String LTAppKey;
+    String mAdID;
     ProgressView mPgbLoading;
 
     public static LoginFailedFragment newInstance(BundleData data) {
@@ -52,6 +53,7 @@ public class LoginFailedFragment extends BaseFragment {
                 googleClientID = mData.getGoogleClientID();
                 LTAppID = mData.getLTAppID();
                 LTAppKey = mData.getLTAppKey();
+                mAdID = mData.getmAdID();
                 initData(mPrivacyUrl, mAgreementUrl);
             }
         }
@@ -73,13 +75,13 @@ public class LoginFailedFragment extends BaseFragment {
                 data.setLTAppKey(LTAppKey);
                 data.setLTAppID(LTAppID);
                 data.setGoogleClientID(googleClientID);
+                data.setmAdID(mAdID);
                 getProxyActivity().addFragment(LoginFragment.newInstance(data),
                         false,
                         true);
             }
         }, 2000);
     }
-
 
 
     @Override

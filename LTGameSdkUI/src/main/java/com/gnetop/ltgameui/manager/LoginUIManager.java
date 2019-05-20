@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 
+import com.facebook.login.LoginManager;
 import com.gnetop.ltgamecommon.base.Constants;
 import com.gnetop.ltgamecommon.model.ResultData;
 import com.gnetop.ltgamecommon.util.PreferencesUtils;
@@ -75,6 +76,7 @@ public class LoginUIManager {
                          final String LTAppID, final String LTAppKey, final String adID) {
         PreferencesUtils.remove(activity, Constants.USER_LT_UID);
         PreferencesUtils.remove(activity, Constants.USER_LT_UID_TOKEN);
+        LoginManager.getInstance().logOut();
         GoogleLoginManager.GoogleSingOut(activity, googleClientID, new OnGoogleSignOutListener() {
             @Override
             public void onSignOutSuccess() {

@@ -31,6 +31,7 @@ public class LoginActivity extends BaseAppActivity {
         String LTAppID = bundle.getString("LTAppID");
         String LTAppKey = bundle.getString("LTAppKey");
         String mAdID = bundle.getString("adID");
+        String mPackageID = bundle.getString("mPackageID");
 
         BundleData data = new BundleData();
         data.setAgreementUrl(mAgreementUrl);
@@ -39,6 +40,7 @@ public class LoginActivity extends BaseAppActivity {
         data.setLTAppID(LTAppID);
         data.setLTAppKey(LTAppKey);
         data.setmAdID(mAdID);
+        data.setmPackageID(mPackageID);
 
         if (!TextUtils.isEmpty(mAgreementUrl) &&
                 !TextUtils.isEmpty(mPrivacyUrl)) {

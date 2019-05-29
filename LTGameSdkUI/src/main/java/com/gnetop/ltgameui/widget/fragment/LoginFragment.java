@@ -34,6 +34,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
     String LTAppID;
     String LTAppKey;
     String mAdID;
+    String mPackageID;
     private static final int REQUEST_CODE = 0X01;
 
     public static LoginFragment newInstance(BundleData data) {
@@ -72,6 +73,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                 LTAppID = mData.getLTAppID();
                 LTAppKey = mData.getLTAppKey();
                 mAdID = mData.getmAdID();
+                mPackageID = mData.getmPackageID();
                 Log.e("LoginFragment", mPrivacyUrl + "====" + mAgreementUrl
                         + "===" + "===" + LTAppKey + "===" + LTAppID + "==" + mAdID);
             }
@@ -100,7 +102,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
         if (!TextUtils.isEmpty(LTAppID) &&
                 !TextUtils.isEmpty(LTAppKey) && !TextUtils.isEmpty(mAdID)) {
             GoogleLoginManager.onActivityResult(requestCode, data, REQUEST_CODE, mActivity,
-                    LTAppID, LTAppKey, mAdID,
+                    LTAppID, LTAppKey, mAdID,mPackageID,
                     new OnLoginSuccessListener() {
                         @Override
                         public void onSuccess(BaseEntry<ResultData> result) {
@@ -163,6 +165,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
             data.setLTAppID(LTAppID);
             data.setGoogleClientID(googleClientID);
             data.setmAdID(mAdID);
+            data.setmPackageID(mPackageID);
             getProxyActivity().addFragment(LoginFailedFragment.newInstance(data),
                     false,
                     true);
@@ -181,6 +184,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
             data.setLTAppID(LTAppID);
             data.setGoogleClientID(googleClientID);
             data.setmAdID(mAdID);
+            data.setmPackageID(mPackageID);
             getProxyActivity().addFragment(AgreementFragment.newInstance(data),
                     false,
                     true);
@@ -195,7 +199,7 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                 !TextUtils.isEmpty(LTAppKey) && !TextUtils.isEmpty(mAdID)) {
 
             FaceBookLoginManager.getInstance().initFaceBook(mActivity,
-                    LTAppID, LTAppKey, mAdID,
+                    LTAppID, LTAppKey, mAdID,mPackageID,
                     new OnLoginSuccessListener() {
                         @Override
                         public void onSuccess(BaseEntry<ResultData> result) {

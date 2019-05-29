@@ -34,6 +34,7 @@ public class AgreementFragment extends BaseFragment implements View.OnClickListe
     String LTAppID;
     String LTAppKey;
     String mAdID;
+    String mPackageID;
 
 
     public static AgreementFragment newInstance(BundleData data) {
@@ -82,6 +83,7 @@ public class AgreementFragment extends BaseFragment implements View.OnClickListe
                 LTAppID = mData.getLTAppID();
                 LTAppKey = mData.getLTAppKey();
                 mAdID = mData.getmAdID();
+                mPackageID = mData.getmPackageID();
             }
         }
     }
@@ -145,6 +147,7 @@ public class AgreementFragment extends BaseFragment implements View.OnClickListe
             data.setLTAppID(LTAppID);
             data.setGoogleClientID(googleClientID);
             data.setmAdID(mAdID);
+            data.setmPackageID(mPackageID);
             getProxyActivity().addFragment(LoginFragment.newInstance(data),
                     false,
                     true);

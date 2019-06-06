@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.facebook.AccessToken;
 import com.facebook.FacebookAuthorizationException;
@@ -27,7 +28,7 @@ import com.gnetop.ltgameui.base.BaseFragment;
 
 public class LoginFragment extends BaseFragment implements View.OnClickListener {
 
-    LinearLayout mLytGoogle, mLytFaceBook;
+    TextView mLytGoogle, mLytFaceBook;
     String mAgreementUrl;
     String mPrivacyUrl;
     String googleClientID;

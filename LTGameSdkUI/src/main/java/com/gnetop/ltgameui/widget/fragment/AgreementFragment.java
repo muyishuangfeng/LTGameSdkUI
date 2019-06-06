@@ -2,6 +2,7 @@ package com.gnetop.ltgameui.widget.fragment;
 
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatCheckBox;
+import android.support.v7.widget.AppCompatImageView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -23,7 +24,7 @@ import com.gnetop.ltgameui.base.BaseFragment;
 public class AgreementFragment extends BaseFragment implements View.OnClickListener,
         CompoundButton.OnCheckedChangeListener {
 
-    TextView mTxtAgreement, mTxtPrivacy;
+    AppCompatImageView mImgAgreement,mImgPrivacy;
     Button mBtnInto;
     AppCompatCheckBox mCkbAgreement, mCkbPrivacy;
     boolean isAgreement = false;
@@ -54,11 +55,11 @@ public class AgreementFragment extends BaseFragment implements View.OnClickListe
     protected void initView(View view) {
         isAgreement = false;
         isPrivacy = false;
-        mTxtAgreement = view.findViewById(R.id.txt_agreement);
-        mTxtAgreement.setOnClickListener(this);
+        mImgAgreement = view.findViewById(R.id.img_agreement);
+        mImgAgreement.setOnClickListener(this);
 
-        mTxtPrivacy = view.findViewById(R.id.txt_privacy);
-        mTxtPrivacy.setOnClickListener(this);
+        mImgPrivacy = view.findViewById(R.id.img_privacy);
+        mImgPrivacy.setOnClickListener(this);
 
         mCkbAgreement = view.findViewById(R.id.ckb_agreement);
         mCkbAgreement.setOnCheckedChangeListener(this);
@@ -100,12 +101,11 @@ public class AgreementFragment extends BaseFragment implements View.OnClickListe
                 }
 
             }
-        } else if (view.getId() == R.id.txt_privacy) {
+        } else if (view.getId() == R.id.img_privacy) {
             if (!TextUtils.isEmpty(mPrivacyUrl)) {
                 UrlUtils.getInstance().loadUrl(mActivity, mPrivacyUrl);
             }
-        } else if (view.getId() == R.id.txt_agreement) {
-
+        } else if (view.getId() == R.id.img_agreement) {
             if (!TextUtils.isEmpty(mAgreementUrl)) {
                 UrlUtils.getInstance().loadUrl(mActivity, mAgreementUrl);
             }

@@ -16,6 +16,29 @@
         android:textColor="@color/colorBlack"
         android:textSize="@dimen/sp_22" />
 
+
+    <TextView
+        android:id="@+id/lyt_login_facebook"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_35"
+        android:layout_gravity="center"
+        android:layout_marginEnd="@dimen/dp_50"
+        android:layout_marginStart="@dimen/dp_50"
+        android:layout_marginTop="@dimen/dp_13"
+        android:background="@drawable/ic_facebook" />
+
+    <TextView
+        android:id="@+id/lyt_login_google"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_35"
+        android:layout_gravity="center"
+        android:layout_marginEnd="@dimen/dp_50"
+        android:layout_marginStart="@dimen/dp_50"
+        android:layout_marginTop="@dimen/dp_13"
+        android:background="@drawable/ic_google"
+        android:gravity="center"
+        android:orientation="horizontal" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,67 +49,5 @@
         android:textColor="@color/colorGray"
         android:textSize="@dimen/sp_12" />
 
-    <LinearLayout
-        android:id="@+id/lyt_login_facebook"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_28"
-        android:layout_gravity="center"
-        android:layout_marginEnd="@dimen/dp_50"
-        android:layout_marginStart="@dimen/dp_50"
-        android:layout_marginTop="@dimen/dp_13"
-        android:background="@drawable/layout_facebook_corner"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <android.support.v7.widget.AppCompatImageView
-            android:layout_width="@dimen/dp_24"
-            android:layout_height="@dimen/dp_24"
-            android:layout_gravity="start|center"
-            android:layout_margin="@dimen/dp_2"
-            android:src="@drawable/facebook" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginEnd="@dimen/dp_5"
-            android:layout_marginStart="@dimen/dp_6"
-            android:gravity="center"
-            android:maxLines="1"
-            android:text="@string/text_facebook"
-            android:textColor="@color/colorWhite"
-            android:textSize="@dimen/sp_12" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/lyt_login_google"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_28"
-        android:layout_gravity="center"
-        android:layout_marginEnd="@dimen/dp_50"
-        android:layout_marginStart="@dimen/dp_50"
-        android:layout_marginTop="@dimen/dp_13"
-        android:background="@drawable/layout_google_corner"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <android.support.v7.widget.AppCompatImageView
-            android:layout_width="@dimen/dp_24"
-            android:layout_height="@dimen/dp_24"
-            android:layout_gravity="start|center"
-            android:layout_margin="@dimen/dp_2"
-            android:src="@drawable/google" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_marginEnd="@dimen/dp_6"
-            android:layout_marginStart="@dimen/dp_6"
-            android:gravity="center"
-            android:text="@string/text_google"
-            android:textColor="@color/colorWhite"
-            android:textSize="@dimen/sp_12" />
-    </LinearLayout>
 
 </LinearLayout>

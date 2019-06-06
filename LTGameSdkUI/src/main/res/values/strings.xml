@@ -5,8 +5,8 @@
     <string name="text_privacy">개인정보 수집/이용 동의</string>
     <string name="text_user_privacys">隐私政策</string>
     <string name="text_agreement">게임 이용 약관 동의</string>
-    <string name="text_detail">&#160;[상세]</string>
-    <string name="text_details">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;[상세]</string>
+    <string name="text_detail">[상세]</string>
+    <string name="text_details">[상세]</string>
     <string name="text_user_agreement">用户协议</string>
     <string name="text_login">로그인</string>
     <string name="text_facebook">Facebook &#160;계정으로 로그인</string>

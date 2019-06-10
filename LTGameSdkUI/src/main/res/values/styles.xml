@@ -28,7 +28,11 @@
         <item name="android:windowAnimationStyle">@style/notAnimation</item>
     </style>
 
-
+    <!-- 中间对话框-->
+    <style name="ActionSheetAnimation" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/push_up_in</item>
+        <item name="android:windowExitAnimation">@anim/push_up_out</item>
+    </style>
 
 
 

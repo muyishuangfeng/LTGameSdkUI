@@ -17,4 +17,10 @@
     <string name="fb_login_test_protocol_scheme">10e2be01b323f2c4d7b5c408b534946d</string>
     <string name="text_parameter_error">参数错误</string>
     <string name="text_login_failed">로그인 실패, 다시 시도하시겠습니까?	</string>
+    <string name="txt_default">default</string>
+    <string name="txt_attention">알림</string>
+    <string name="text_sure">확인</string>
+    <string name="text_logout">회원 탈퇴됀 계정입니다.</string>
+    <string name="text_seal_number">정지됀 계정입니다. 고객센터에 문의해주세요.</string>
+    <string name="text_sealing_equipment">차단됀 단말기입니다. 고객센터에 문의해주세요.</string>
 </resources>

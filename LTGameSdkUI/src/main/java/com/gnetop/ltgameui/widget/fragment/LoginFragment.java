@@ -25,6 +25,7 @@ import com.gnetop.ltgamefacebook.FaceBookLoginManager;
 import com.gnetop.ltgamegoogle.login.GoogleLoginManager;
 import com.gnetop.ltgameui.R;
 import com.gnetop.ltgameui.base.BaseFragment;
+import com.gnetop.ltgameui.ui.dialog.GeneralDialogUtil;
 
 public class LoginFragment extends BaseFragment implements View.OnClickListener {
 
@@ -144,6 +145,11 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                             Log.e("google==", "onError" + error);
                             loginFailed();
                         }
+
+                        @Override
+                        public void onCodeResult(int code) {
+                            GeneralDialogUtil.showActionDialog(mActivity,code);
+                        }
                     });
         }
     }
@@ -246,6 +252,11 @@ public class LoginFragment extends BaseFragment implements View.OnClickListener 
                         public void onError(String error) {
                             Log.e("facebook", error);
                             loginFailed();
+                        }
+
+                        @Override
+                        public void onCodeResult(int code) {
+                            GeneralDialogUtil.showActionDialog(mActivity,code);
                         }
                     });
         }

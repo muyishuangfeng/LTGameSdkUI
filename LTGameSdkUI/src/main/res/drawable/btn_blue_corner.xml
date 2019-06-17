@@ -3,12 +3,11 @@
     android:shape="rectangle">
 
 
-    <!-- 圆角半径 -->
-    <corners android:radius="@dimen/dp_22" />
+
 
 
     <!-- 矩形的内部颜色，这里设置成白色 -->
     <gradient
-        android:endColor="@color/colorBlue"
-        android:startColor="@color/colorBlue" />
+        android:endColor="@color/colorSure"
+        android:startColor="@color/colorSure" />
 </shape>
